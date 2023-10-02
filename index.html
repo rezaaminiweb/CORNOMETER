@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/output.css" />
+  </head>
+  <body class="bg-gradient-to-r from-[#6b7fff] to-white">
+    <div
+      class="container flex justify-center items-center min-h-[100vh] w-[100%] mx-auto"
+    >
+      <div
+        class="sm480:w-[70%] md:w-[50%] sm480:h-[70vh] lg:h-[80vh] bg-[#5d5ded] flex items-center justify-center flex-col rounded-md"
+      >
+        <h1 class="uppercase font-bold text-2xl md:text-4xl text-white">
+          cornometr
+        </h1>
+        <p class="text-4xl my-5">
+          <span class="font-bold text-4xl" id="second">00 </span>:
+          <span id="tens" class="font-bold text-4xl">00</span>
+        </p>
+        <div class="flex justify-center sm480:flex-col md:flex-row">
+          <button
+            class="p-3 bg-blue-800 hover:bg-white hover:text-blue-800 text-white transition rounded-md text-2xl font-medium uppercase"
+            id="btn-start"
+          >
+            start
+          </button>
+          <button
+            class="p-3 mx-3 sm480:my-3 md:my-0 bg-blue-800 hover:bg-white hover:text-blue-800 text-white transition rounded-md text-2xl font-medium uppercase"
+            id="btn-stop"
+          >
+            stop
+          </button>
+          <button
+            class="p-3 bg-blue-800 hover:bg-white hover:text-blue-800 text-white transition rounded-md text-2xl font-medium uppercase"
+            id="btn-reset"
+          >
+            reset
+          </button>
+        </div>
+      </div>
+    </div>
+    <script>
+      let start = document.getElementById("btn-start");
+      let stop = document.getElementById("btn-stop");
+      let reset = document.getElementById("btn-reset");
+      let second = document.getElementById("second");
+      let tens = document.getElementById("tens");
+      let isActive = false
+      start.addEventListener("click", () => {
+        if (!isActive) {
+          // فقط اگر شمارنده غیرفعال است، اجرا شود
+          s = setInterval(reza, 10);
+          isActive = true; // شمارنده را فعال کنید
+        }
+      });
+      stop.addEventListener("click", () => {
+        clearInterval(s);
+        isActive = false
+      });
+      reset.addEventListener("click", () => {
+        tend = 0;
+        tens.innerHTML = "00";
+        seconde = 0;
+        second.innerHTML = "00";
+        clearInterval(s);
+      });
+      let tend = 0;
+      let seconde = 0;
+      reza = () => {
+        tend++;
+        tens.innerHTML = tend;
+        if (tend < 10) {
+          tens.innerHTML = "0" + tend;
+        }
+        if (tend > 98) {
+          tend = 0;
+          seconde++;
+          second.innerHTML = seconde;
+
+          if (seconde < 10) {
+            second.innerHTML = "0" + seconde;
+          }
+        }
+      };
+    </script>
+  </body>
+</html>
